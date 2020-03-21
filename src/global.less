@@ -1,0 +1,73 @@
+@import '~antd/es/style/themes/default.less';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
+
+.sheet-container table.data-grid tr td.cell:not(.selected){
+  border: 1px solid red !important;
+}
+
+/**
+** 解决表格整体的宽度问题
+**/
+.data-grid-container .data-grid{
+  width: 100%; // 默认表格的宽度相当于span类型，根据内容的宽度，很挤
+}
+
+/**
+** 解决cell中输入框宽度和高度问题
+**/
+.data-grid-container .data-grid .cell > input{
+  width: 100% !important; // 默认是calc(100% -6px)
+  height: auto !important; // 默认是11px
+}
