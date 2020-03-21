@@ -1,22 +1,11 @@
 import Datasheet from 'react-datasheet';
 // Be sure to include styles at some point, probably during your bootstrapping
 import 'react-datasheet/lib/react-datasheet.css';
-import { Row, Col, Card, InputNumber } from 'antd'
+import { InputNumber } from 'antd'
 import _ from 'lodash'
 import numeral from 'numeral'
 
 import React from 'react'
-import kill from 'cross-port-killer';
-
-function toThousands(num) {
-    var num = (num || 0).toString(), result = '';
-    while (num.length > 3) {
-        result = ',' + num.slice(-3) + result;
-        num = num.slice(0, num.length - 3);
-    }
-    if (num) { result = num + result; }
-    return result;
-}
 
 export default class ComponentSheet extends React.Component {
     constructor(props) {
@@ -67,7 +56,6 @@ export default class ComponentSheet extends React.Component {
                     if(cell.componentName==='InputNumber'){
                         var number = numeral(cell.value);
                         return number.format();
-                        // return toThousands(Number(cell.value).toFixed(2))
                     }else{
                         return cell.value
                     }
